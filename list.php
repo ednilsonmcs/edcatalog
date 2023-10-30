@@ -4,12 +4,179 @@
 <head>
     <link rel="stylesheet" href="styles/global.css">
     <title>Listar</title>
+    <style>
+        /* spacing */
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            border: 3px solid #000016;
+        }
+
+        thead th:nth-child(1) {
+            width: 10%;
+        }
+
+        thead th:nth-child(2) {
+            width: 20%;
+        }
+
+        thead th:nth-child(3) {
+            width: 30%;
+        }
+
+        thead th:nth-child(4) {
+            width: 20%;
+        }
+
+        thead th:nth-child(5) {
+            width: 10%;
+        }
+
+        thead th:nth-child(6) {
+            width: 5%;
+        }
+
+        thead th:nth-child(7) {
+            width: 5%;
+        }
+
+        th,
+        td {
+            padding: 20px;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #000016;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fff;
+        }
+
+        tbody tr {
+            background-image: url(noise.png);
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <?php include "common/sidebar.php"; ?>
-        <h1>Listar</h1>
+    <div class="general-container ">
+        <?php
+        include "common/sidebar.php";
+        ?>
+        <div class="content">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Nome da marca</th>
+                        <th scope="col">Está ativo?</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <?php
+                    $products = [
+                        [
+                            'id' => '0001',
+                            'name' => 'Bola de Basquete',
+                            'description' => 'Bola de basquete tamanho adulto. Material de couro. Garantia 2 anos.',
+                            'brandName' => 'Wilson',
+                            'isActive' => 'Sim'
+                        ],
+                        [
+                            'id' => '0002',
+                            'name' => 'Bola de Tênis',
+                            'description' => 'Bola de basquete tamanho adulto. Material de couro. Garantia 2 anos.',
+                            'brandName' => 'Wilson',
+                            'isActive' => 'Sim'
+                        ],
+                        [
+                            'id' => '0003',
+                            'name' => 'Bola de Vôlei',
+                            'description' => 'Bola de basquete tamanho adulto. Material de couro. Garantia 2 anos.',
+                            'brandName' => 'Wilson',
+                            'isActive' => 'Sim'
+                        ],
+                        [
+                            'id' => '0004',
+                            'name' => 'Bola de Futebol',
+                            'description' => 'Bola de basquete tamanho adulto. Material de couro. Garantia 2 anos.',
+                            'brandName' => 'Wilson',
+                            'isActive' => 'Sim'
+                        ],
+                        [
+                            'id' => '0005',
+                            'name' => 'Chuteira',
+                            'description' => 'Bola de basquete tamanho adulto. Material de couro. Garantia 2 anos.',
+                            'brandName' => 'Wilson',
+                            'isActive' => 'Sim'
+                        ],
+                        [
+                            'id' => '0006',
+                            'name' => 'Basqueteira',
+                            'description' => 'Bola de basquete tamanho adulto. Material de couro. Garantia 2 anos.',
+                            'brandName' => 'Wilson',
+                            'isActive' => 'Sim'
+                        ],
+                        [
+                            'id' => '0007',
+                            'name' => 'Skate',
+                            'description' => 'Bola de basquete tamanho adulto. Material de couro. Garantia 2 anos.',
+                            'brandName' => 'Wilson',
+                            'isActive' => 'Sim'
+                        ],
+                    ];
+
+
+                    for ($i = 0; $i < sizeof($products); $i++) {
+
+                        echo '
+                                <tr>
+                                    <td>' . $products[$i]['id'] . '</td>
+                                    <td>' . $products[$i]['name'] . '</td>
+                                    <td>' . $products[$i]['description'] . '</td>
+                                    <td>' . $products[$i]['brandName'] . '</td>
+                                    <td>' . $products[$i]['isActive'] . '</td>
+                                    <td>
+                                        <a href="#">
+                                            <img class="icon-link-image" src="images/9004815_add_file_document_page_icon.svg" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <img class="icon-link-image" src="images/9004828_cross_delete_remove_cancel_icon.svg" />
+                                        </a>
+                                    </td>
+                                </tr>';
+                    }
+                    ?>
+                </tbody>
+                <?php
+
+                    echo '
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="3">Total albums</th>
+                                    <td colspan="2">' . sizeof($products) . '</td>
+                                </tr>
+                            </tfoot>';
+
+                ?>
+
+            </table>
+
+        </div>
     </div>
 </body>
 
