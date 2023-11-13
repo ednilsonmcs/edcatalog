@@ -89,14 +89,13 @@
             <h1>Cadastro de produtos</h1>
 
             <div class="container">
-                <form action="action_page.php">
-
+                <form method="post" action="processa_formulario.php">
                     <div class="row">
                         <div class="col-25">
                             <label for="name">Nome:</label>
                         </div>
                         <div class="col-25">
-                            <input type="text" name="name">
+                        <input type="text" name="nome" placeholder="Nome">
                         </div>
                     </div>
 
@@ -105,7 +104,7 @@
                             <label for="description">Descrição:</label>
                         </div>
                         <div class="col-25">
-                            <input type="text" name="description">
+                        <input type="text" name="descricao" placeholder="Descrição">
                         </div>
                     </div>
 
@@ -114,7 +113,7 @@
                             <label for="brandName">Nome da marca:</label>
                         </div>
                         <div class="col-25">
-                            <input type="text" name="brandName">
+                        <input type="text" name="nomeMarca" placeholder="Nome da Marca">
                         </div>
                     </div>
 
@@ -125,19 +124,19 @@
                             </div>
                             <div class="col-25">
                                 <p>
-                                    <input type="radio" name="isActive" id="isActive" value="true" />
+                                    <input type="radio" name="ativo" id="isActive" value="true" />
                                     <label for="isActive">Sim</label>
                                 </p>
                             </div>
                             <div class="col-25">
                                 <p>
-                                    <input type="radio" name="isActive" id="isntActive" value="false" />
+                                    <input type="radio" name="ativo" id="isntActive" value="false" />
                                     <label for="isntActive">Não</label>
                                 </p>
                             </div>
                         </fieldset>
                     </div>
-
+                    <input type="submit">
                 </form>
             </div>
 

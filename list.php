@@ -1,3 +1,18 @@
+<?php
+require_once 'conexao.php';
+
+$conexao = ConexaoBD::conectar();
+
+try {
+    $stmt = $conexao->query("SELECT * FROM produtos");
+    $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    echo "Erro" . $e->getMessage();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -139,22 +154,23 @@
                     ];
 
 
-                    for ($i = 0; $i < sizeof($products); $i++) {
+                    for ($i = 0; $i < sizeof($resultados); $i++) {
+                        $ativo = ($resultados[$i]['ativo'] == 1) ? 'Sim' : 'Não';
 
                         echo '
                                 <tr>
-                                    <td>' . $products[$i]['id'] . '</td>
-                                    <td>' . $products[$i]['name'] . '</td>
-                                    <td>' . $products[$i]['description'] . '</td>
-                                    <td>' . $products[$i]['brandName'] . '</td>
-                                    <td>' . $products[$i]['isActive'] . '</td>
+                                    <td>' . $resultados[$i]['id'] . '</td>
+                                    <td>' . $resultados[$i]['nome'] . '</td>
+                                    <td>' . $resultados[$i]['descricao'] . '</td>
+                                    <td>' . $resultados[$i]['nomeMarca'] . '</td>
+                                    <td>' . $ativo . '</td>
                                     <td>
-                                        <a href="#">
+                                        <a href="update.php?id=' . $resultados[$i]['id'] . '">
                                             <img class="icon-link-image" src="images/9004815_add_file_document_page_icon.svg" />
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#">
+                                        <a href="processa_delecao.php?id=' . $resultados[$i]['id'] . '">
                                             <img class="icon-link-image" src="images/9004828_cross_delete_remove_cancel_icon.svg" />
                                         </a>
                                     </td>
@@ -168,7 +184,7 @@
                             <tfoot>
                                 <tr>
                                     <th scope="row" colspan="3">Total albums</th>
-                                    <td colspan="2">' . sizeof($products) . '</td>
+                                    <td colspan="2">' . sizeof($resultados) . '</td>
                                 </tr>
                             </tfoot>';
 
